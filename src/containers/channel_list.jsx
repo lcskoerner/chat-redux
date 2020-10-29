@@ -10,8 +10,8 @@ class ChannelList extends Component {
     ];
 
     return (
-      <div>
-        {channels.map(channel => <p>{channel}</p>)}
+      <div className="channel-list">
+        {channels.map(channel => <p># {channel}</p>)}
       </div>
     );
   }

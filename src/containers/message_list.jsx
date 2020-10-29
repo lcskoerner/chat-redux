@@ -6,7 +6,8 @@ import MessageForm from './message_form';
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    selectedChannel: state.selectedChannel
   };
 }
 
@@ -14,6 +15,7 @@ class MessageList extends Component {
   render() {
     return (
       <div>
+        <p>Channel # {this.props.selectedChannel}</p>
         {this.props.messages.map(message => <Message message={message} />)}
         <MessageForm />
       </div>

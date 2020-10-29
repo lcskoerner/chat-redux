@@ -4,4 +4,8 @@ body {
 .app {
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  .channel-list {
+    margin: 10px;
+  }
 }
