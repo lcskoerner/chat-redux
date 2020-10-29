@@ -1,12 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react';
+import React from 'react';
 
-class Message extends Component {
-  render() {
-    return (
-      <p>{this.props.message}</p>
-    );
-  }
-}
+const Message = (props) => {
+  return (
+    <div>
+      <p>{props.message.author} – {props.message.created_at}</p>
+      <p>{props.message.content}</p>
+    </div>
+  );
+};
 
 export default Message;
