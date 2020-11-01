@@ -5,17 +5,15 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
-
+import App from './components/app';
+import '../assets/stylesheets/application.scss';
 import messagesReducer from './reducers/messages_reducer';
-import channelsReducer from './reducers/channels_reducer';
 import selectedChannelReducer from './reducers/selected_channel_reducer';
 import currentUserNameReducer from './reducers/current_username_reducer';
 
-// internal modules
-import App from './components/app';
-import '../assets/stylesheets/application.scss';
-
 // State and reducers
+
+const identityReducer = (state = null) => state;
 
 const initialState = {
   messages: [],
@@ -26,7 +24,7 @@ const initialState = {
 
 const reducers = combineReducers({
   messages: messagesReducer,
-  channels: channelsReducer,
+  channels: identityReducer,
   selectedChannel: selectedChannelReducer,
   currentUserName: currentUserNameReducer
 });

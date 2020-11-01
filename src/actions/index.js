@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 // TODO: add and export your own actions
-
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const MESSAGE_POSTED = 'MESSAGE_POSTED';
+export const SELECTED_CHANNEL = 'SELECTED_CHANNEL';
 
 export const fetchMessages = (channel) => {
   const url = `https://wagon-chat.herokuapp.com/${channel}/messages`;
@@ -31,5 +31,12 @@ export const createMessage = (channel, author, content) => {
   return {
     type: MESSAGE_POSTED,
     payload: promise
+  };
+};
+
+export const setChannel = (channel) => {
+  return {
+    type: SELECTED_CHANNEL,
+    payload: channel
   };
 };
