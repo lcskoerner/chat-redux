@@ -11,7 +11,7 @@ class ChannelList extends Component {
 
     return (
       <div className="channel-list">
-        {channels.map(channel => <p># {channel}</p>)}
+        {channels.map(channel => <p key={channel}># {channel}</p>)}
       </div>
     );
   }

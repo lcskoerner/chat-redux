@@ -16,7 +16,7 @@ class MessageList extends Component {
     return (
       <div>
         <p>Channel # {this.props.selectedChannel}</p>
-        {this.props.messages.map(message => <Message message={message} />)}
+        {this.props.messages.map(message => <Message key={message.created_at} message={message} />)}
         <MessageForm />
       </div>
     );

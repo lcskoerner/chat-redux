@@ -11,7 +11,7 @@ module.exports = {
       template: '!!html-loader!templates/index.html'
     })
   ],
-  devtool: 'sourcemap',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -32,5 +32,6 @@ module.exports = {
   },
   resolve: {
     extensions: [ '.js', '.jsx' ]
-  }
+  },
+  mode: 'development'
 };
