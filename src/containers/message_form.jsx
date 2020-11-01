@@ -1,12 +1,56 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { createMessage } from '../actions/index';
 
 class MessageForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+  }
+
+  componentDidMount() {
+    this.messageBox.focus();
+  }
+
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { selectedChannel, currentUserName } = this.props;
+    this.props.createMessage(selectedChannel, currentUserName, this.state.value);
+    this.setState({ value: '' });
+  }
+
   render() {
     return (
-      <p>Input Message</p>
+      <form onSubmit={this.handleSubmit} className="channel-editor">
+        <input
+          ref={(input) => { this.messageBox = input; }}
+          type="text"
+          className="form-control"
+          auto-complete="off"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <button type="submit">Send</button>
+      </form>
     );
   }
 }
 
-export default MessageForm;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createMessage }, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUserName: state.currentUserName,
+    selectedChannel: state.selectedChannel
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
